@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Vagrant::GlobalHalt::VERSION
   spec.authors       = ["Masahiro IUCHI"]
   spec.email         = ["masahiro.iuchi@gmail.com"]
+  spec.licenses      = ['MIT']
 
   spec.summary       = %q{Vagrant plugin to halt all virtual machines.}
   spec.description   = spec.summary
