@@ -25,8 +25,22 @@ module Vagrant
         argv = parse_options(opts)
         return if !argv
 
-        @env.machine_index.each do |entry|
-          @logger.debug(entry.name.to_s)
+        active_machine_entries = @env.machine_index.find_all do |entry|
+          entry.state.to_s == 'running' && entry.valid?(@env.home_path)
+        end
+
+        if active_machine_entries.empty?
+          @env.ui.info('No running VM.')
+          return 0
+        end
+
+        active_machine_entries.each do |entry|
+          machine_info = "id: #{entry.id.to_s}, name: #{entry.name.to_s}, provider: #{entry.provider.to_s}, directory: #{entry.vagrantfile_path.to_s}"
+          @env.ui.info(machine_info)
+
+          with_target_vms(entry.id.to_s) do |vm|
+            vm.action(:halt, force_halt: options[:force])
+          end;
         end
 
         0
