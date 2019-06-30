@@ -72,7 +72,6 @@ GEM
     net-ssh (5.1.0)
     netrc (0.11.0)
     nori (2.6.0)
-    rake (10.5.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -113,8 +112,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.0)
-  rake (~> 10.0)
   vagrant!
   vagrant-global_halt!
 

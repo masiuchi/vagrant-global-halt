@@ -2,7 +2,7 @@ require 'optparse'
 
 module Vagrant
   module GlobalHalt
-    class Command < Vagrant.plugina('2', :command)
+    class Command < Vagrant.plugin('2', :command)
       def self.synopsis
         'stops all vagrant machines'
       end
